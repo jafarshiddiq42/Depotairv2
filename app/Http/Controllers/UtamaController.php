@@ -58,7 +58,7 @@ class UtamaController extends Controller
 
         
 
-       return view('home',compact('baru2','nomor','total'));
+       return view('beranda',compact('baru2','nomor','total'));
     // dd($total);
     }
 
