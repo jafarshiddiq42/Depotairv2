@@ -33,7 +33,7 @@
                             <td style="width:25%">{{ $item->namaBarang }}</td>
                             <td style="width:15%">{{ $item->jumlah }}</td>
                             <td style="width:25%">
-                                <form action="/{{ $item->idbarang }}" method="post" name="formisi">
+                                <form action="/perbaikan/{{ $item->idbarang }}" method="post" name="formisi">
                                     @csrf
                                     <input class="form-control" type="number" name="jumlahisi" id="jumlahtambah">
                                 </form>

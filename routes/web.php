@@ -5,6 +5,7 @@ use App\Http\Controllers\KreditController;
 use App\Http\Controllers\UtamaController;
 use App\Models\Debit;
 use App\Models\Kredit;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/',[UtamaController::class,'index']);
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/',[UtamaController::class,'index']);
 
 Route::get('/barang',[UtamaController::class,'barangindex']);
 Route::get('/editbarang/{id}',[UtamaController::class,'barangedit']);
@@ -36,6 +39,12 @@ Route::get('/kredit',[KreditController::class,'index']);
 Route::get('/kredit/form',[KreditController::class,'form']);
 Route::post('/kreditsubmit',[KreditController::class,'formsubmit']);
 
-Route::post('/{id}',[UtamaController::class,'updatehome']);
+Route::post('/perbaikan/{id}',[UtamaController::class,'updatehome']);
+});
 
 
+
+
+Auth::routes(['register'=>false]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
