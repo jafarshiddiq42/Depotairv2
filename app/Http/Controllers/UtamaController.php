@@ -14,6 +14,11 @@ class UtamaController extends Controller
 {
     public function index()
     {   
+
+        if (Barang::all()->count()=== 0){
+            return redirect('/barang');
+        }else{
+
         $nomor = 1;
         $barang=Barang::all();
         $baru = Haribaru::where('tanggal','=',date('Y-m-d'))->count();
@@ -60,6 +65,9 @@ class UtamaController extends Controller
 
        return view('beranda',compact('baru2','nomor','total'));
     // dd($total);
+        }
+
+
     }
 
     public function updatehome($id , Request $request)

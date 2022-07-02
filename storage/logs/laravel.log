@@ -6869,3 +6869,12 @@ Did you mean one of these?
 #46 /opt/lampp/htdocs/Depotair/vendor/laravel/framework/src/Illuminate/Foundation/resources/server.php(16): require_once('...')
 #47 {main}
 "} 
+[2022-07-02 13:02:46] local.ERROR: Command "serev" is not defined. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"serev\" is not defined. at /opt/lampp/htdocs/Depotair/vendor/symfony/console/Application.php:692)
+[stacktrace]
+#0 /opt/lampp/htdocs/Depotair/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find()
+#1 /opt/lampp/htdocs/Depotair/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun()
+#2 /opt/lampp/htdocs/Depotair/vendor/laravel/framework/src/Illuminate/Console/Application.php(102): Symfony\\Component\\Console\\Application->run()
+#3 /opt/lampp/htdocs/Depotair/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run()
+#4 /opt/lampp/htdocs/Depotair/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 

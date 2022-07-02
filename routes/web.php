@@ -3,8 +3,10 @@
 use App\Http\Controllers\DebitController;
 use App\Http\Controllers\KreditController;
 use App\Http\Controllers\UtamaController;
+use App\Models\Barang;
 use App\Models\Debit;
 use App\Models\Kredit;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +26,25 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::group(['middleware'=>'auth'],function(){
-    Route::get('/',[UtamaController::class,'index']);
+
+    // if (Barang::all()->count()=== 0) {
+    //     Route::get('/barang',[UtamaController::class,'barangindex'])->name('home');
+    //     Route::get('/',[UtamaController::class,'index']);
+    // }else {
+    //     Route::get('/barang',[UtamaController::class,'barangindex']);
+    //     Route::get('/',[UtamaController::class,'index'])->name('home');
+    // }
+
+    // if (User::all()->count()!=0) {
+    //     Route::get('/',[UtamaController::class,'index'])->name('home');
+    // }else {
+
+    //     Route::get('/',function(){
+    //         return redirect('/register');
+    //     })->name('home');
+    // }
+
+Route::get('/',[UtamaController::class,'index'])->name('home');
 
 Route::get('/barang',[UtamaController::class,'barangindex']);
 Route::get('/editbarang/{id}',[UtamaController::class,'barangedit']);
@@ -43,8 +63,13 @@ Route::post('/perbaikan/{id}',[UtamaController::class,'updatehome']);
 });
 
 
+if (User::all()->count()===0) {
+    Auth::routes();
+}else{
+    Auth::routes([
+        'register'=>false
+    ]);
+}
 
 
-Auth::routes(['register'=>false]);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
